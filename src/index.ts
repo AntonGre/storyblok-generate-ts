@@ -47,7 +47,7 @@ export default async function storyblokToTypescript({
         for (const values of componentsJson.components) {
             const obj: JSONSchema4 = {
                 '$id': '#/' + values.name,
-                title: getTitle(values.name),
+title: camelcase(getTitle(values.name), {pascalCase: true}),
                 type: 'object'
             }
             obj.properties = await typeMapper(values.schema, obj.title as string)
